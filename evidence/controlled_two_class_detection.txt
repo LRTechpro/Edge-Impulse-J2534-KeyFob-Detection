@@ -1,0 +1,90 @@
+FRAME#1510 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x000346D2 t=486051
+Found 2 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 24) (size 16 x 8). Proba is 0.93
+#1) Found J2534VCI at (x = 8, y = 24) (size 16 x 8). Proba is 0.93
+#2) Found keyfob at (x = 32, y = 24) (size 8 x 8). Proba is 0.95
+FRAME#1511 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00037D54 t=486371
+Found 2 object(s) in 197ms
+Found J2534VCI at (x = 16, y = 16) (size 16 x 8). Proba is 0.64
+#1) Found J2534VCI at (x = 16, y = 16) (size 16 x 8). Proba is 0.64
+#2) Found J2534VCI at (x = 24, y = 32) (size 8 x 8). Proba is 0.73
+FRAME#1512 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x000340C6 t=486691
+Found 3 object(s) in 197ms
+Found keyfob at (x = 16, y = 8) (size 8 x 8). Proba is 0.95
+#1) Found keyfob at (x = 16, y = 8) (size 8 x 8). Proba is 0.95
+#2) Found J2534VCI at (x = 24, y = 16) (size 8 x 8). Proba is 0.93
+#3) Found J2534VCI at (x = 24, y = 32) (size 8 x 8). Proba is 0.91
+FRAME#1513 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00031CAD t=487011
+Found 3 object(s) in 197ms
+Found keyfob at (x = 16, y = 8) (size 8 x 8). Proba is 0.91
+#1) Found keyfob at (x = 16, y = 8) (size 8 x 8). Proba is 0.91
+#2) Found J2534VCI at (x = 24, y = 16) (size 8 x 8). Proba is 0.86
+#3) Found J2534VCI at (x = 24, y = 32) (size 8 x 8). Proba is 0.89
+FRAME#1514 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0002FF63 t=487331
+Found 2 object(s) in 197ms
+Found keyfob at (x = 16, y = 8) (size 8 x 8). Proba is 0.83
+#1) Found keyfob at (x = 16, y = 8) (size 8 x 8). Proba is 0.83
+#2) Found J2534VCI at (x = 24, y = 16) (size 8 x 8). Proba is 0.92
+FRAME#1515 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0002EF2C t=487651
+Found 2 object(s) in 197ms
+Found keyfob at (x = 16, y = 8) (size 8 x 8). Proba is 0.86
+#1) Found keyfob at (x = 16, y = 8) (size 8 x 8). Proba is 0.86
+#2) Found J2534VCI at (x = 24, y = 16) (size 8 x 16). Proba is 0.95
+FRAME#1516 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0002D2AE t=487970
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 24, y = 24) (size 8 x 8). Proba is 0.83
+FRAME#1517 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0002AD24 t=488290
+Found 3 object(s) in 197ms
+Found keyfob at (x = 16, y = 16) (size 8 x 8). Proba is 0.73
+#1) Found keyfob at (x = 16, y = 16) (size 8 x 8). Proba is 0.73
+#2) Found keyfob at (x = 32, y = 24) (size 8 x 8). Proba is 0.53
+#3) Found J2534VCI at (x = 16, y = 32) (size 16 x 8). Proba is 0.91
+FRAME#1518 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x000294D2 t=488610
+Found 2 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 8). Proba is 0.80
+#1) Found keyfob at (x = 16, y = 24) (size 8 x 8). Proba is 0.80
+#2) Found J2534VCI at (x = 16, y = 32) (size 16 x 8). Proba is 0.95
+FRAME#1519 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0002A011 t=488930
+Found 2 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 8). Proba is 0.97
+#1) Found keyfob at (x = 16, y = 24) (size 8 x 8). Proba is 0.97
+#2) Found J2534VCI at (x = 16, y = 32) (size 16 x 8). Proba is 0.97
+
+FRAME#1642 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00043DED t=528274
+Found 2 object(s) in 197ms
+Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.89
+#1) Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.89
+#2) Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.79
+FRAME#1643 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00043D14 t=528594
+Found 2 object(s) in 197ms
+Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.71
+#1) Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.71
+#2) Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.98
+FRAME#1644 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x000434D8 t=528914
+Found 2 object(s) in 197ms
+Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.78
+#1) Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.78
+#2) Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.86
+FRAME#1645 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00042E15 t=529234
+Found 1 object(s) in 197ms
+Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.89
+FRAME#1646 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x000447CD t=529554
+Found 2 object(s) in 197ms
+Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.84
+#1) Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.84
+#2) Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.97
+FRAME#1647 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00043E66 t=529874
+Found 2 object(s) in 197ms
+Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.92
+#1) Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.92
+#2) Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.93
+FRAME#1648 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004376E t=530194
+Found 2 object(s) in 197ms
+Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.91
+#1) Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.91
+#2) Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.69
+FRAME#1649 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004323E t=530513
+Found 2 object(s) in 197ms
+Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.95
+#1) Found keyfob at (x = 8, y = 24) (size 8 x 8). Proba is 0.95
+#2) Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.83
