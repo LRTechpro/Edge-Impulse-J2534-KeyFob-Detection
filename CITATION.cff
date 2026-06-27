@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this project, please cite it as below."
+title: "ESP32-CAM FOMO Automotive Object Detection Research"
+type: software
+authors:
+  - family-names: "Watkins"
+    given-names: "Harold L. R."
+repository-code: "https://github.com/LRTechpro/esp32cam-fomo-edge-research"
+abstract: "Experimental deployment and evaluation of a two-class Edge Impulse FOMO model on an ESP32-CAM for automotive artifact detection and distance-related analysis."
+license: "NOASSERTION"
