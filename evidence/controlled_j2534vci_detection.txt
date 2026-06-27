@@ -1,0 +1,60 @@
+FRAME#1 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0002A471 t=3364
+Found 1 object(s) in 198ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.99
+FRAME#2 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00047437 t=3684
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 1.00
+FRAME#3 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004793D t=4004
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 1.00
+FRAME#4 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00046A51 t=4324
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 1.00
+FRAME#5 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00049448 t=4644
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 24) (size 8 x 16). Proba is 1.00
+FRAME#6 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00049C36 t=4964
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 1.00
+FRAME#7 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x000485F7 t=5284
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 1.00
+FRAME#8 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00047283 t=5603
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.99
+FRAME#9 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00043DE9 t=5923
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 1.00
+FRAME#10 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004138F t=6243
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.98
+FRAME#11 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004225F t=6563
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.98
+FRAME#12 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004181F t=6883
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.95
+FRAME#13 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004264C t=7203
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.90
+FRAME#14 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00044424 t=7523
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.86
+FRAME#15 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00044390 t=7843
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.94
+FRAME#16 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00043AF7 t=8162
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.92
+FRAME#17 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x000444C6 t=8482
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.95
+FRAME#18 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00043E4B t=8802
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.93
+FRAME#19 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004226A t=9122
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.87
+FRAME#20 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004024A t=9442
+Found 1 object(s) in 197ms
+Found J2534VCI at (x = 8, y = 32) (size 8 x 8). Proba is 0.90
