@@ -1,0 +1,20 @@
+# Arduino build output
+build/
+*.bin
+*.elf
+*.map
+*.hex
+
+# IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local model libraries and archives
+*_inferencing.zip
+arduino-library/
+
+# Local temporary files
+*.tmp
+*.bak
