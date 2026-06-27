@@ -1,126 +1,159 @@
-# MS579 Computer Vision: Assignment 4.1
-## Edge Impulse Object Detection: J2534 VCI and Key Fob Detection
+# ESP32-CAM FOMO Automotive Object Detection Research
 
-**Student:** Harold L. R. Watkins  
-**Course:** MS579 Computer Vision  
-**Institution:** University of Advancing Technology (UAT)  
-**Semester:** Summer 2026  
+An experimental embedded computer vision project that deploys an Edge Impulse FOMO object detector to an AI Thinker ESP32-CAM for recognizing two automotive artifacts:
 
----
+- `keyfob`
+- `J2534VCI`
 
-## Project Overview
+The work focuses on model deployment, live-frame validation, controlled object detection, simultaneous multi-class detection, and a follow-on distance experiment using grid-based FOMO outputs.
 
-This repository documents the complete data collection, labeling, training, and deployment pipeline for a custom Edge Impulse FOMO (Faster Objects, More Objects) object detection model targeting two automotive cybersecurity artifacts:
+## Why this project matters
 
-| Class Label | Object | Images |
-|-------------|--------|--------|
-| `keyfob` | Remote key fob (PEPS/passive entry system) | 75 |
-| `J2534VCI` | J2534 Vehicle Communication Interface adapter | 75 |
-| *(none)* | Background (no object present) | 30 |
-| **Total** | | **180** |
+Low-cost edge vision can support physical security, tool inventory, diagnostic-bay monitoring, and embedded AI prototyping without requiring a cloud-connected inference service. This repository documents a reproducible engineering workflow from trained model to live ESP32-CAM inference, including both successful results and observed limitations.
 
----
+## System architecture
 
-## Hardware & Software Stack
-
-| Component | Details |
-|-----------|---------|
-| Camera Module | ESP32-CAM (AI Thinker), OV2640, 240×240 px |
-| IDE | Arduino IDE 2.3.9 |
-| Camera Library | [EloquentEsp32cam](https://github.com/eloquentarduino/EloquentEsp32cam) |
-| ML Platform | [Edge Impulse Studio](https://edgeimpulse.com) |
-| Model Architecture | FOMO MobileNetV2 0.35 |
-| Input Resolution | 48 × 48 × 3 (RGB) |
-| Quantization | int8 (EON Compiler) |
-| PSRAM | Not required |
-
----
-
-## Repository Structure
-
-```
-├── README.md                          # This file
-├── Collect_Images_for_EdgeImpulse.ino # Arduino sketch for image collection
-├── arduino-library/
-│   └── ei-haroldlrwatkins-project-1-arduino-1.0.1-impulse-#1.zip
-├── screenshots/
-│   ├── ESP32_Espressif_Board_Package_Installed.png
-│   └── ESP32CAM_Board_Selected_EloquentEsp32cam_Installed.png
-├── contact-sheets/
-│   ├── keyFob_selected_contact_sheet.jpg
-│   ├── j2534VCI_selected_contact_sheet.jpg
-│   └── background_selected_contact_sheet.jpg
-└── report/
-    └── MS579_Assignment4_1_Harold_Watkins_Final_Report.pdf
+```text
+OV2640 camera
+    -> 96 x 96 RGB565 capture buffer
+    -> Edge Impulse preprocessing
+    -> 48 x 48 FOMO model input
+    -> centroid/grid-cell detections
+    -> serial diagnostics and CSV output
 ```
 
----
+## Hardware and software
 
-## Arduino Image Collection Sketch
+| Component | Configuration |
+|---|---|
+| Board | AI Thinker ESP32-CAM |
+| Camera | OV2640 |
+| ESP32 core | 3.3.10 |
+| IDE | Arduino IDE 2.3.10 |
+| Camera capture | 96 x 96 RGB565 |
+| Model input | 48 x 48 RGB |
+| Learning block | Edge Impulse FOMO |
+| Classes | `keyfob`, `J2534VCI` |
+| Typical inference time | Approximately 197 ms per frame |
+| Serial baud | 115200 |
 
-The `Collect_Images_for_EdgeImpulse.ino` sketch turns the ESP32-CAM into a Wi-Fi-connected image capture server. Once flashed and powered:
+## Research questions
 
-1. Connect the ESP32-CAM to the same Wi-Fi network as your computer.
-2. Open the Serial Monitor (115200 baud) to see the device IP address.
-3. Navigate to the address in a browser to access the image capture interface.
-4. Click "Capture" to save images directly to Edge Impulse.
+1. Can a compact FOMO model run reliably on an ESP32-CAM?
+2. Can the model distinguish a key fob from a J2534 vehicle communication interface?
+3. Can both classes be detected in the same frame?
+4. Can reported FOMO width, height, or area be used as a practical distance proxy?
 
-> **Security Note:** Replace `YOUR_WIFI_SSID` and `YOUR_WIFI_PASSWORD` in the sketch with your actual Wi-Fi credentials before flashing. Never commit real credentials to a public repository.
+## Main findings
 
----
+### Embedded deployment
 
-## Impulse Configuration (Edge Impulse)
+- Firmware compiled and uploaded successfully to the ESP32-CAM.
+- Changing frame checksums confirmed that fresh image data was being processed.
+- Controlled J2534VCI testing produced 20 consecutive correct detections.
+- Controlled key-fob testing produced sustained correct detections.
+- Both classes were detected simultaneously in multiple frames.
+- In Frame 1519, both `keyfob` and `J2534VCI` were reported at 0.97 confidence.
 
+### Distance experiment
+
+A centered key fob was evaluated at 22 cm, 33 cm, and 44 cm with 10 samples per distance.
+
+| Distance | Correct detections | Detection rate | Average confidence | Reported size |
+|---:|---:|---:|---:|---:|
+| 22 cm | 9/10 | 90% | 0.939 | 8 x 8 |
+| 33 cm | 10/10 | 100% | 0.911 | 8 x 8 |
+| 44 cm | 10/10 | 100% | 0.908 | 8 x 8 |
+
+The detector remained effective across the tested distances, but the reported width, height, and area stayed fixed at 8 x 8 and 64 model units. This shows that the deployed FOMO output is useful for classification and centroid localization, but it is not a calibrated continuous object-size measurement for range estimation.
+
+## Repository structure
+
+```text
+.
+├── README.md
+├── CITATION.cff
+├── CONTRIBUTING.md
+├── .gitignore
+├── src/
+│   └── keyfob_distance_experiment/
+│       └── ESP32CAM_FOMO_Keyfob_Distance_Experiment_22_33_44cm.ino
+├── docs/
+│   ├── methodology.md
+│   ├── results.md
+│   ├── troubleshooting.md
+│   └── model-limitations.md
+├── hardware/
+│   └── esp32cam_configuration.md
+├── model/
+│   └── model_summary.md
+├── data/
+│   └── keyfob_distance_results.csv
+└── evidence/
+    ├── controlled_j2534vci_detection.txt
+    ├── controlled_keyfob_detection.txt
+    ├── controlled_two_class_detection.txt
+    └── keyfob_distance_serial_log.txt
 ```
-Input Block:    Image — 48×48 RGB, Fit shortest axis
-Processing:     Image (normalize to [0, 1])
-Learning Block: Object Detection (FOMO MobileNetV2 0.35)
-Training:       30 cycles, LR = 0.005, data augmentation enabled
-Augmentation:   Enabled (flip, brightness jitter, rotation)
-Quantization:   int8 post-training (EON Compiler)
-```
 
-**Dataset Split:** 141 training / 39 testing (79% / 21%)
+## Build and run
 
----
+1. Install the Espressif ESP32 board package in Arduino IDE.
+2. Install EloquentEsp32cam.
+3. Export the trained Edge Impulse model as an Arduino library and install it locally.
+4. Open the sketch in `src/keyfob_distance_experiment`.
+5. Select `AI Thinker ESP32-CAM`.
+6. Set CPU frequency to 240 MHz, PSRAM enabled, and Huge APP partition.
+7. Compile and upload.
+8. Open Serial Monitor at 115200 baud with `Newline` enabled.
+9. Enter `C22`, `C33`, or `C44` to collect a 10-sample run.
 
-## Key Design Decisions
+The generated Edge Impulse inferencing library is not redistributed here. Install the library exported from your own Edge Impulse project and update the include name if necessary.
 
-**Why FOMO over YOLO?**  
-FOMO eliminates the anchor regression head and NMS post-processing, reducing MACs by ~100× versus SSD/YOLO-Nano. This enables real-time inference on the ESP32's Xtensa LX6 cores without PSRAM.
+## Diagnostic design
 
-**Why manual bounding boxes?**  
-The Edge Impulse Gemini AI-labeling tool was tested but encountered API rate-limit quota errors. Manual annotation was preferred for ground-truth quality — tight, rule-governed boxes produce better FOMO convergence than variable API-generated boxes.
+The firmware records:
 
-**Why 75 images per class?**  
-Meets the assignment target while remaining practical for manual annotation. Background images (30) provide approximately 14% of the dataset — within the recommended 10–20% range for FOMO false-positive suppression.
+- distance command
+- sample number
+- frame number
+- class status
+- object count
+- label
+- centroid and grid-cell coordinates
+- reported width and height
+- calculated area
+- confidence
+- inference time
+- framebuffer checksum
 
-**Label casing:**  
-- `keyfob` — all lowercase, matches Edge Impulse output tensor exactly  
-- `J2534VCI` — capital J, capital VCI, no separators — avoids tokenization ambiguity in generated C++ headers
+The checksum samples every eighth byte across the full framebuffer. It is intended as a lightweight freshness diagnostic, not a cryptographic hash.
 
----
+## Limitations
 
-## Security Considerations
+- Results depend on object pose, scale, lighting, distance, and frame position.
+- FOMO can produce duplicate grid activations around one physical object.
+- A reported grid cell is not equivalent to a true pixel-accurate bounding box.
+- The distance study used a small controlled sample and does not establish a general ranging model.
+- The model is a research prototype, not a production-certified detection system.
 
-This project targets automotive cybersecurity artifacts. The J2534 VCI adapter is a high-value attack surface for ECU reflashing and diagnostic replay attacks. Visual detection of these devices in a facility context supports:
+## Future research
 
-- Physical access control enforcement
-- Unauthorized diagnostic session alerting
-- Inventory and chain-of-custody monitoring
+- Expand pose, background, and lighting diversity.
+- Add calibrated camera geometry and a true size estimator.
+- Compare FOMO centroid output with a bounding-box regression model.
+- Evaluate temporal smoothing and duplicate-cell merging.
+- Test additional automotive diagnostic tools and key-fob designs.
+- Measure false-positive behavior in cluttered workshop environments.
 
-No proprietary calibration data, vehicle PII, or ECU firmware is included in this repository.
+## Skills demonstrated
 
----
+Embedded C++, ESP32, Arduino, Edge Impulse, FOMO, object detection, model deployment, serial diagnostics, framebuffer analysis, performance evaluation, controlled testing, and technical documentation.
 
-## References
+## Third-party components
 
-- Dronebot Workshop. (2023, June 25). *Simple ESP32-CAM object detection* [Video]. YouTube. https://www.youtube.com/watch?v=HDRvZ_BYd08
-- Edge Impulse. (2024). *FOMO: Faster objects, more objects object detection algorithm*. https://docs.edgeimpulse.com/docs/edge-impulse-studio/learning-blocks/object-detection/fomo-object-detection-algorithm
-- Eloquent Arduino. (2024). *EloquentEsp32cam* [Software]. GitHub. https://github.com/eloquentarduino/EloquentEsp32cam
-- SAE International. (2015). *SAE J2534: Recommended practice for pass-thru vehicle programming*. https://www.sae.org/standards/content/j2534/
-- Zanardi, A., Bourdoukan, A., & Shafahi, A. (2022). *FOMO: Detection of small objects on embedded devices*. Edge Impulse Research. https://edgeimpulse.com/blog/fomo
+This project uses or references Edge Impulse, Espressif ESP32 camera software, Arduino, and EloquentEsp32cam. Their respective licenses and documentation apply. No claim of authorship is made over third-party libraries.
 
----
+## Project status
 
-*Report PDF and full assignment submission: see `/report/MS579_Assignment4_1_Harold_Watkins_Final_Report.pdf`*
+Experimental research prototype with successful controlled deployment and documented generalization limits.
