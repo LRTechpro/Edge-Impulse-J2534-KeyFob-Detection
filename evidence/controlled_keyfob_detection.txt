@@ -1,0 +1,30 @@
+FRAME#15 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x000495EF t=7843
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.85
+FRAME#16 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004B845 t=8162
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.86
+FRAME#17 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004A71F t=8482
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.88
+FRAME#18 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00048F60 t=8802
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.93
+FRAME#19 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00046EDA t=9122
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.95
+FRAME#20 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004715F t=9442
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.94
+FRAME#21 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004650A t=9762
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.94
+FRAME#22 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x000442F6 t=10082
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.95
+FRAME#23 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x00043238 t=10402
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.97
+FRAME#24 len=18432 w=96 h=96 addr=0x3FFCA410 csum=0x0004392E t=10721
+Found 1 object(s) in 197ms
+Found keyfob at (x = 16, y = 24) (size 8 x 16). Proba is 0.97
