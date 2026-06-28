@@ -7,6 +7,34 @@ An experimental embedded computer vision project that deploys an Edge Impulse FO
 
 The work focuses on model deployment, live-frame validation, controlled object detection, simultaneous multi-class detection, and a follow-on distance experiment using grid-based FOMO outputs.
 
+## Visual evidence
+
+### Embedded inference pipeline
+
+![ESP32-CAM FOMO pipeline](docs/figures/system-pipeline.svg)
+
+### Hardware and Arduino environment
+
+| ESP32 board package | AI Thinker board and camera library |
+|---|---|
+| ![ESP32 board package installed](screenshots/ESP32_Espressif_Board_Package_Installed.png) | ![AI Thinker ESP32-CAM selected](screenshots/ESP32CAM_Board_Selected_EloquentEsp32cam_Installed.png) |
+
+### Training data examples
+
+| Key-fob samples | J2534VCI samples |
+|---|---|
+| ![Key-fob contact sheet](contact-sheets/keyFob_selected_contact_sheet.jpg) | ![J2534VCI contact sheet](contact-sheets/j2534VCI_selected_contact_sheet.jpg) |
+
+### Strongest simultaneous-detection result
+
+![Frame 1519 simultaneous detection](docs/figures/frame-1519.svg)
+
+### Distance experiment summary
+
+![Distance experiment summary](docs/figures/distance-results.svg)
+
+See the complete [evidence index](docs/evidence-index.md), [technical discoveries](docs/technical-discoveries.md), and [experiment notebook](docs/experiment-notebook.md).
+
 ## Why this project matters
 
 Low-cost edge vision can support physical security, tool inventory, diagnostic-bay monitoring, and embedded AI prototyping without requiring a cloud-connected inference service. This repository documents a reproducible engineering workflow from trained model to live ESP32-CAM inference, including both successful results and observed limitations.
@@ -31,6 +59,7 @@ OV2640 camera
 | ESP32 core | 3.3.10 |
 | IDE | Arduino IDE 2.3.10 |
 | Camera capture | 96 x 96 RGB565 |
+| Framebuffer size | 18,432 bytes |
 | Model input | 48 x 48 RGB |
 | Learning block | Edge Impulse FOMO |
 | Classes | `keyfob`, `J2534VCI` |
@@ -67,6 +96,19 @@ A centered key fob was evaluated at 22 cm, 33 cm, and 44 cm with 10 samples per 
 
 The detector remained effective across the tested distances, but the reported width, height, and area stayed fixed at 8 x 8 and 64 model units. This shows that the deployed FOMO output is useful for classification and centroid localization, but it is not a calibrated continuous object-size measurement for range estimation.
 
+## Key technical discoveries
+
+1. **The camera stream was live.** Changing checksums ruled out a frozen framebuffer.
+2. **The framebuffer warning was nonfatal.** `Camera OK` and successful inference followed the warning.
+3. **DRAM allocation simplified debugging.** The 18,432-byte RGB565 frame fit in DRAM.
+4. **Pose sensitivity dominated some failures.** The same J2534VCI moved from repeated misses to 20 consecutive correct detections after controlled repositioning.
+5. **FOMO counts are not physical counts.** Neighboring grid cells sometimes activated around one object.
+6. **FOMO cell size was not a usable range signal.** Width and height stayed at 8 x 8 across 22 cm, 33 cm, and 44 cm.
+7. **Class performance was asymmetric.** The key fob generalized much better than the J2534VCI in the distance setup.
+8. **Wrapper types required code-specific fixes.** Arduino `String`, `bbox_t`, and callback behavior had to be handled explicitly.
+
+Full details are in [docs/technical-discoveries.md](docs/technical-discoveries.md).
+
 ## Repository structure
 
 ```text
@@ -81,8 +123,15 @@ The detector remained effective across the tested distances, but the reported wi
 ├── docs/
 │   ├── methodology.md
 │   ├── results.md
+│   ├── technical-discoveries.md
+│   ├── experiment-notebook.md
+│   ├── evidence-index.md
 │   ├── troubleshooting.md
-│   └── model-limitations.md
+│   ├── model-limitations.md
+│   └── figures/
+│       ├── system-pipeline.svg
+│       ├── frame-1519.svg
+│       └── distance-results.svg
 ├── hardware/
 │   └── esp32cam_configuration.md
 ├── model/
