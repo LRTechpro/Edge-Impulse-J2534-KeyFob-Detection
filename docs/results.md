@@ -16,6 +16,8 @@ Frame 1519 reported:
 - `keyfob`: 0.97
 - `J2534VCI`: 0.97
 
+![Frame 1519 simultaneous detection](figures/frame-1519.svg)
+
 Some frames showed duplicate FOMO grid activations around one physical object.
 
 ## Distance experiment summary
@@ -28,8 +30,19 @@ Some frames showed duplicate FOMO grid activations around one physical object.
 
 Average inference time remained approximately 197 ms per frame.
 
+![Distance experiment result](figures/distance-results.svg)
+
 ## Interpretation
 
 Detection reliability remained high across the three tested distances. Confidence changed modestly, but the reported dimensions stayed fixed at one 8 x 8 grid cell.
 
 No linear, inverse-distance, or inverse-square relationship could be estimated from the reported FOMO cell size. The deployed output is appropriate for centroid localization and class presence, but not for direct calibrated range estimation.
+
+## Supporting material
+
+- [Technical discoveries](technical-discoveries.md)
+- [Experiment notebook](experiment-notebook.md)
+- [Evidence index](evidence-index.md)
+- [Raw simultaneous-object serial evidence](../evidence/controlled_two_class_detection.txt)
+- [Raw key-fob distance serial evidence](../evidence/keyfob_distance_serial_log.txt)
+- [Distance CSV dataset](../data/keyfob_distance_results.csv)
